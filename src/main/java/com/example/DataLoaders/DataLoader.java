@@ -14,13 +14,13 @@ import com.example.repositories.PersonRepo;
 @Component // ensures this is run because it is a bean
 public class DataLoader implements ApplicationRunner
 {
-@Autowired // Find a PersonRepo bean and autowire it into personRepo
-PersonRepo personRepo;
-@Override
-public void run(ApplicationArguments arg0) throws Exception
-{
-personRepo.save(new Person(1,"Minnie Mouse", 65, "minnie@cit.ie"));
-personRepo.save(new Person(2,"Daisy Duck", 50, "daisy@cit.ie"));
-personRepo.save(new Person(3,"Gru", 56, "gru@cit.ie"));
-}
+	@Autowired // Find a PersonRepo bean and autowire it into personRepo
+	PersonRepo personRepo;
+	@Override
+	public void run(ApplicationArguments arg0) throws Exception
+	{
+		personRepo.save(new Person(1,"Minnie Mouse", 65, "minnie@cit.ie"));
+		personRepo.save(new Person(2,"Daisy Duck", 50, "daisy@cit.ie"));
+		personRepo.save(new Person(3,"Gru", 56, "gru@cit.ie"));
+	}
 }
