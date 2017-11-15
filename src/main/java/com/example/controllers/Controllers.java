@@ -27,6 +27,7 @@ public class Controllers {
 	final String DISPLAY_ALL_PEOPLE = "displayAllPeople";
 	final String DISPLAY_PERSON = "displayPerson";
 	final String DISPLAY_FLOWER = "displayFlower";
+	final String CHOOSE_FLOWER = "chooseFlowerById";
 	/**
 	 * Calls index.html
 	 */
@@ -82,11 +83,16 @@ public class Controllers {
 		return DISPLAY_ALL_FLOWERS;
 	}
 	
-	@GetMapping("/" + DISPLAY_FLOWER + "/{id}")
-	public String displayFlower(@PathVariable int id, Model model ) {
+	@GetMapping("/" + DISPLAY_FLOWER)
+	public String displayFlower(@RequestParam(value="id", defaultValue="0")int id, Model model ) {
 		Flower flower = (Flower) flowerRepo.findOne((int) id);
 		model.addAttribute("flower", flower);
 		return DISPLAY_FLOWER;
+	}
+	
+	@GetMapping("/" + CHOOSE_FLOWER)
+	public String chooseFlowerById() {
+		return CHOOSE_FLOWER;
 	}
 	
 }
