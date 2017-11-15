@@ -26,6 +26,7 @@ public class Controllers {
 	final String USING_PARAMETER = "usingParameter";
 	final String DISPLAY_ALL_PEOPLE = "displayAllPeople";
 	final String DISPLAY_PERSON = "displayPerson";
+	final String DISPLAY_FLOWER = "displayFlower";
 	/**
 	 * Calls index.html
 	 */
@@ -79,6 +80,13 @@ public class Controllers {
 		List<Flower> flowers = flowerRepo.findAll();
 		model.addAttribute("flowers", flowers);
 		return DISPLAY_ALL_FLOWERS;
+	}
+	
+	@GetMapping("/" + DISPLAY_FLOWER + "/{id}")
+	public String displayFlower(@PathVariable int id, Model model ) {
+		Flower flower = (Flower) flowerRepo.findOne((int) id);
+		model.addAttribute("flower", flower);
+		return DISPLAY_FLOWER;
 	}
 	
 }
