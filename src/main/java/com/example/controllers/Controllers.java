@@ -21,26 +21,30 @@ public class Controllers {
 	@Autowired
 	FlowerRepo flowerRepo;
 	
-	final String DISPLAY_ALL_FLOWERS = "displayFlowers";
+	final String DISPLAY_ALL_FLOWERS = "displayAllFlowers";
+	final String INDEX = "index";
+	final String USING_PARAMETER = "usingParameter";
+	final String DISPLAY_ALL_PEOPLE = "displayAllPeople";
+	final String DISPLAY_PERSON = "displayPerson";
 	/**
 	 * Calls index.html
 	 */
 	@GetMapping("/")
 	public String doWelcomeWithParams(Model model)
 	{
-		return "index";
+		return INDEX;
 	}
 	/*
 	 * An example of using a path variable.
 	 * localhost:8080/usingParameter?name=Cliona will add Cliona to the welcome
 	 * localhost:8080/usingParameter uses the default value of To You!
 	 */
-	@GetMapping("/usingParameter")
+	@GetMapping("/" + USING_PARAMETER)
 	public String doWelcomeWithParams(@RequestParam(value="name", defaultValue="To You!")String name, Model model)
 	{
 		String sentence = "Welcome " + name;
 		model.addAttribute("message", sentence);
-		return "parameter";
+		return USING_PARAMETER;
 	}
 	/*
 	 * The repository uses the in-built findAll() method of MongoRepository
@@ -48,12 +52,12 @@ public class Controllers {
 	 * This list is added to the model
 	 * The model is sent to the displayAll.html template.
 	 */
-	@GetMapping("/displayall")
+	@GetMapping("/" + DISPLAY_ALL_PEOPLE)
 	public String displayAll(Model model)
 	{
 		List<Person> p = personRepo.findAll();
 		model.addAttribute("people", p);
-		return "displayAll";
+		return DISPLAY_ALL_PEOPLE;
 	}
 	/*
 	 * This uses a PathVariable to specify the id being searched for.
@@ -62,12 +66,12 @@ public class Controllers {
 	 * This record is added to the model.
 	 * The model is sent to the displayOne.html resolver.
 	 */
-	@GetMapping("/displayOne/{id}")
+	@GetMapping("/" + DISPLAY_PERSON + "/{id}")
 	public String showMyDetails(@PathVariable int id, Model model)
 	{
 		Person p = (Person) personRepo.findOne((int) id);
 		model.addAttribute("person", p);
-		return "displayOne";
+		return DISPLAY_PERSON;
 	}
 	
 	@GetMapping("/" + DISPLAY_ALL_FLOWERS)
