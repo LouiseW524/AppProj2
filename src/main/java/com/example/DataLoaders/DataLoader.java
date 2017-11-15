@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 import com.example.entities.Flower;
 import com.example.entities.Person;
+import com.example.enums.Category;
 import com.example.repositories.FlowerRepo;
 import com.example.repositories.PersonRepo;
 
@@ -27,8 +28,8 @@ public class DataLoader implements ApplicationRunner
 		personRepo.save(new Person(1,"Minnie Mouse", 65, "minnie@cit.ie"));
 		personRepo.save(new Person(2,"Daisy Duck", 50, "daisy@cit.ie"));
 		personRepo.save(new Person(3,"Gru", 56, "gru@cit.ie"));
-		flowerRepo.save(new Flower(1, "Daffodil", 1.50, "Yellow"));
-		flowerRepo.save(new Flower(2, "Rose", 15.00, "Red"));
-		flowerRepo.save(new Flower(3, "Daisy", 3.50, "White and Yellow"));
+		flowerRepo.save(new Flower(1, "Daffodil", 1.50, Category.FLOWER, "Yellow"));
+		flowerRepo.save(new Flower(2, "Rose", 15.00, Category.FLOWER, "Red"));
+		flowerRepo.save(new Flower(3, "Daisy", 3.50, Category.FLOWER, "White and Yellow"));
 	}
 }

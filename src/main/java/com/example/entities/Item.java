@@ -1,17 +1,30 @@
 package com.example.entities;
 
+import com.example.enums.Category;
+
 public class Item {
 
 	private int id;
 	private String name;
 	private double price;
+	private Category category;
 
-	public Item(int id, String name, double price) {
+	public Item(int id, String name, double price, Category category) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.price = price;
+		this.category = category;
 	}
+	
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
 	public int getId() {
 		return id;
 	}
