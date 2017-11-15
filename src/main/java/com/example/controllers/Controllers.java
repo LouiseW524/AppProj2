@@ -9,13 +9,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.entities.Flower;
 import com.example.entities.Person;
+import com.example.repositories.FlowerRepo;
 import com.example.repositories.PersonRepo;
 
 @Controller
 public class Controllers {
 	@Autowired
 	PersonRepo personRepo;
+	@Autowired
+	FlowerRepo flowerRepo;
+	
+	final String DISPLAY_ALL_FLOWERS = "displayFlowers";
 	/**
 	 * Calls index.html
 	 */
@@ -62,4 +68,13 @@ public class Controllers {
 		Person p = (Person) personRepo.findOne((int) id);
 		model.addAttribute("person", p);
 		return "displayOne";
-	}}
+	}
+	
+	@GetMapping("/" + DISPLAY_ALL_FLOWERS)
+	public String displayAllFlowers(Model model) {
+		List<Flower> flowers = flowerRepo.findAll();
+		model.addAttribute("flowers", flowers);
+		return DISPLAY_ALL_FLOWERS;
+	}
+	
+}
