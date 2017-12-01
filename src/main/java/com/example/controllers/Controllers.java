@@ -36,11 +36,7 @@ public class Controllers {
 	{
 		return INDEX;
 	}
-	/*
-	 * An example of using a path variable.
-	 * localhost:8080/usingParameter?name=Cliona will add Cliona to the welcome
-	 * localhost:8080/usingParameter uses the default value of To You!
-	 */
+	
 	@GetMapping("/" + USING_PARAMETER)
 	public String doWelcomeWithParams(@RequestParam(value="name", defaultValue="To You!")String name, Model model)
 	{
@@ -48,12 +44,7 @@ public class Controllers {
 		model.addAttribute("message", sentence);
 		return USING_PARAMETER;
 	}
-	/*
-	 * The repository uses the in-built findAll() method of MongoRepository
-	 * This returns a list of People
-	 * This list is added to the model
-	 * The model is sent to the displayAll.html template.
-	 */
+
 	@GetMapping("/" + DISPLAY_ALL_PEOPLE)
 	public String displayAll(Model model)
 	{
@@ -61,13 +52,7 @@ public class Controllers {
 		model.addAttribute("people", p);
 		return DISPLAY_ALL_PEOPLE;
 	}
-	/*
-	 * This uses a PathVariable to specify the id being searched for.
-	 * findOne() is the default method to search for one record using MongoRepository.
-	 * It returns one record.
-	 * This record is added to the model.
-	 * The model is sent to the displayOne.html resolver.
-	 */
+	
 	@GetMapping("/" + DISPLAY_PERSON + "/{id}")
 	public String showMyDetails(@PathVariable int id, Model model)
 	{
