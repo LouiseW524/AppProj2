@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>All Flowers</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" media="all"
+	href="../static/styles.css" th:href="@{/styles.css}" />
+</head>
+<body>
+	<h1>Flowers in Database</h1>
+	<table>
+		<tr>
+			<th>ID</th>
+			<th>Name</th>
+			<th>Price</th>
+			<th>Colour</th>
+		</tr>
+		<tr th:each="package : ${packages}">
+			<form action="viewPackage">
+				<input type="hidden" id="package_id" value="${package.id}"></input>
+				<td th:text="${package.id}">ID</td>
+				<td th:text="${package.name}">NAME</td>
+				<td th:text="${package.price}">PRICE</td>
+				<td th:text="${package.colour}">COLOUR</td>
+				<td><input type="submit" value="View Package"></input></td>
+			</form>
+		</tr>
+	</table>
+</body>
+</html>

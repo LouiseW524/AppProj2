@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.entities.EventPackage;
 import com.example.entities.Flower;
 import com.example.entities.Person;
+import com.example.repositories.EventPackageRepo;
 import com.example.repositories.FlowerRepo;
 import com.example.repositories.PersonRepo;
 
@@ -20,6 +22,8 @@ public class Controllers {
 	PersonRepo personRepo;
 	@Autowired
 	FlowerRepo flowerRepo;
+	@Autowired
+	EventPackageRepo packageRepo;
 	
 	final String DISPLAY_ALL_FLOWERS = "displayAllFlowers";
 	final String INDEX = "index";
@@ -28,6 +32,7 @@ public class Controllers {
 	final String DISPLAY_PERSON = "displayPerson";
 	final String DISPLAY_FLOWER = "displayFlower";
 	final String CHOOSE_FLOWER = "chooseFlowerById";
+	final String CHOOSE_PACKAGE = "choosePackage";
 	/**
 	 * Calls index.html
 	 */
@@ -93,6 +98,13 @@ public class Controllers {
 	@GetMapping("/" + CHOOSE_FLOWER)
 	public String chooseFlowerById() {
 		return CHOOSE_FLOWER;
+	}
+	
+	@GetMapping("/" + CHOOSE_PACKAGE) 
+	public String choosePackage(Model model){
+		List<EventPackage> packages = packageRepo.findAll();
+		model.addAttribute("packages", packages);
+		return CHOOSE_PACKAGE;
 	}
 	
 }
