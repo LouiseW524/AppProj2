@@ -11,17 +11,16 @@
 	<table>
 		<tr>
 			<th>ID</th>
-			<th>Name</th>
-			<th>Price</th>
-			<th>Colour</th>
+			<th>Items</th>
+			<th>Bouquet</th>
+			<th>View</th>
 		</tr>
 		<tr th:each="package : ${packages}">
-			<form action="viewPackage">
+			<form action="viewPackage" method="get">
 				<input type="hidden" id="package_id" value="${package.id}"></input>
 				<td th:text="${package.id}">ID</td>
-				<td th:text="${package.name}">NAME</td>
-				<td th:text="${package.price}">PRICE</td>
-				<td th:text="${package.colour}">COLOUR</td>
+				<td th:text="${package.items}">ITEMS</td>
+				<td th:text="${package.bouquet}">BOUQUET</td>
 				<td><input type="submit" value="View Package"></input></td>
 			</form>
 		</tr>
