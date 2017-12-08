@@ -17,8 +17,10 @@ import com.example.enums.Category;
 import com.example.repositories.EventPackageRepo;
 import com.example.repositories.FlowerInventoryRepo;
 import com.example.repositories.FlowerRepo;
+import com.example.repositories.OrderRepo;
 import com.example.repositories.PersonRepo;
 import com.example.rest.entities.FlowerInventory;
+import com.example.rest.entities.Order;
 
 //ApplicationRunner is run before after the beans have been created and the application
 //context has been completed.
@@ -34,6 +36,8 @@ public class DataLoader implements ApplicationRunner
 	EventPackageRepo eventPackageRepo;
 	@Autowired
 	FlowerInventoryRepo flowerInventoryRepo;
+	@Autowired
+	OrderRepo orderRepo;
 	
 	
 	@Override
@@ -82,6 +86,10 @@ public class DataLoader implements ApplicationRunner
 		flowerInventory.addFlower(daffodil);
 		flowerInventory.addFlower(rose);
 		flowerInventory.addFlower(daisy);
+		
+		Order daffodilOrder = new Order(listDaffodils);
+		Order rosesOrder = new Order(listRoses);
+		Order daisiesOrder = new Order(listDaisies);
 
 		personRepo.save(minnieMouse);
 		personRepo.save(daisyDuck);
@@ -93,6 +101,9 @@ public class DataLoader implements ApplicationRunner
 		eventPackageRepo.save(eventPackageForConor);
 		eventPackageRepo.save(eventPackageForLouise);
 		flowerInventoryRepo.save(flowerInventory);
+		orderRepo.save(daffodilOrder);
+		orderRepo.save(rosesOrder);
+		orderRepo.save(daisiesOrder);
 
 	}
 }
