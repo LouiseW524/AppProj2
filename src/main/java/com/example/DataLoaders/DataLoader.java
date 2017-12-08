@@ -55,9 +55,11 @@ public class DataLoader implements ApplicationRunner
 		ArrayList<Flower> bouquetRoses = new ArrayList<Flower>();
 		ArrayList<Flower> bouquetDaisies = new ArrayList<Flower>();
 
-		bouquetDaffodils.add(daffodil);
-		bouquetRoses.add(rose);
-		bouquetDaisies.add(daisy);
+		for (int index = 0; index < 20; index++) {
+			bouquetDaffodils.add(daffodil);
+			bouquetRoses.add(rose);
+			bouquetDaisies.add(daisy);
+		}
 		
 		ArrayList<Item> packageItems = new ArrayList<Item>();
 		ArrayList<Item> packageItems2 = new ArrayList<Item>();
