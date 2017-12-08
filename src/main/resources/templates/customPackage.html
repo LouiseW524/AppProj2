@@ -7,19 +7,16 @@
 	href="../static/styles.css" th:href="@{/styles.css}" />
 </head>
 <body>
-	<p>Phillie's Flowers</p>
+	<h1>Create your own custom package</h1>
 	
-	<p>
-	<form action="/choosePackage" method="get" id="form1">
-	<input type="submit"  value="Browse Packages"></input>
-	</form>
-	</p>
-	
-	<p>
-	<form action="/customPackage" method="get" id="custompackage">
-	<input type="submit" value="Create custom Package"></input>
-	</form>
-	</p>
+	<table>
+		
+		<tr th:each="item : ${items}">
+				<input type="hidden" id="package_id" value="${package.id}"></input>
+				<td th:text="${item.name}"></td>
+				
+		</tr>
+	</table>
 	
 </body>
 </html>

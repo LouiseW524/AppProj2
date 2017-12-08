@@ -9,21 +9,24 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.entities.Bouquet;
 import com.example.entities.EventPackage;
 import com.example.entities.Flower;
+import com.example.entities.Item;
 import com.example.entities.Person;
 import com.example.repositories.EventPackageRepo;
-import com.example.repositories.FlowerRepo;
+import com.example.repositories.ItemRepo;
 import com.example.repositories.PersonRepo;
 
 @Controller
 public class Controllers {
 	@Autowired
 	PersonRepo personRepo;
-	@Autowired
-	FlowerRepo flowerRepo;
+	
 	@Autowired
 	EventPackageRepo packageRepo;
+	@Autowired
+	ItemRepo itemRepo;
 	
 	final String DISPLAY_ALL_FLOWERS = "displayAllFlowers";
 	final String INDEX = "index";
@@ -33,6 +36,7 @@ public class Controllers {
 	final String DISPLAY_FLOWER = "displayFlower";
 	final String CHOOSE_FLOWER = "chooseFlowerById";
 	final String CHOOSE_PACKAGE = "choosePackage";
+	final String CUSTOM_PACKAGE = "customPackage";
 	/**
 	 * Calls index.html
 	 */
@@ -68,14 +72,14 @@ public class Controllers {
 	
 	@GetMapping("/" + DISPLAY_ALL_FLOWERS)
 	public String displayAllFlowers(Model model) {
-		List<Flower> flowers = flowerRepo.findAll();
+		List<Item> flowers = itemRepo.findAll();
 		model.addAttribute("flowers", flowers);
 		return DISPLAY_ALL_FLOWERS;
 	}
 	
 	@GetMapping("/" + DISPLAY_FLOWER)
 	public String displayFlower(@RequestParam(value="id", defaultValue="0")int id, Model model ) {
-		Flower flower = (Flower) flowerRepo.findOne((int) id);
+		Flower flower = (Flower) itemRepo.findOne((int) id);
 		model.addAttribute("flower", flower);
 		return DISPLAY_FLOWER;
 	}
@@ -90,6 +94,15 @@ public class Controllers {
 		List<EventPackage> packages = packageRepo.findAll();
 		model.addAttribute("packages", packages);
 		return CHOOSE_PACKAGE;
+	}
+	
+	@GetMapping("/" + CUSTOM_PACKAGE) 
+	public String customPackage(Model model){
+		
+		List<Item>item = itemRepo.findAll();
+		
+		model.addAttribute("items", item);
+		return CUSTOM_PACKAGE;
 	}
 	
 }

@@ -6,21 +6,22 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.entities.Flower;
-import com.example.repositories.FlowerRepo;
+import com.example.entities.Item;
+import com.example.repositories.ItemRepo;
 
 @RestController
 public class RestApiController {
 	
 	@Autowired
-	FlowerRepo flowerRepo;
+	ItemRepo flowerRepo;
 	
 	private final String REST_DIR = "/rest/";
 	private final String GET_FLOWER = REST_DIR + "getFlower";
 	
 	@RequestMapping(GET_FLOWER)
 //	@RequestParam(value="id" defaultValue="1") 
-	public Flower getFlower(int id) {
-		Flower flower = flowerRepo.findOne(id);
+	public Item getFlower(int id) {
+		Item flower = flowerRepo.findOne(id);
 		return flower;
 	}
 

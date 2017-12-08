@@ -8,14 +8,24 @@ public class EventPackage {
 	private static int nextId = 0;
 	private ArrayList <Item> items = new ArrayList <Item>();
 	private Bouquet bouquet;
+	private String eventName;
 	
-	public EventPackage(ArrayList<Item> items, Bouquet bouquet) {
+	public EventPackage(String eventName, ArrayList<Item> items, Bouquet bouquet) {
 		super();
 		this.items = items;
 		this.bouquet = bouquet;
+		this.eventName = eventName;
 		setNewId();
 	}
 	
+	public String getEventName() {
+		return eventName;
+	}
+
+	public void setEventName(String eventName) {
+		this.eventName = eventName;
+	}
+
 	private void setNewId() {
 		id = nextId;
 		nextId++;

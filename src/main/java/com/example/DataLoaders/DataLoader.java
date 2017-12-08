@@ -16,7 +16,7 @@ import com.example.entities.Person;
 import com.example.enums.Category;
 import com.example.repositories.EventPackageRepo;
 import com.example.repositories.FlowerInventoryRepo;
-import com.example.repositories.FlowerRepo;
+import com.example.repositories.ItemRepo;
 import com.example.repositories.PersonRepo;
 import com.example.rest.entities.FlowerInventory;
 
@@ -28,12 +28,13 @@ public class DataLoader implements ApplicationRunner
 {
 	@Autowired // Find a PersonRepo bean and autowire it into personRepo
 	PersonRepo personRepo;
-	@Autowired
-	FlowerRepo flowerRepo;
+	
 	@Autowired
 	EventPackageRepo eventPackageRepo;
 	@Autowired
 	FlowerInventoryRepo flowerInventoryRepo;
+	@Autowired
+	ItemRepo itemRepo;
 	
 	
 	@Override
@@ -74,21 +75,28 @@ public class DataLoader implements ApplicationRunner
 		Bouquet bouquetDaisies = new Bouquet(listDaisies);
 
 		
-		EventPackage eventPackageForMary = new EventPackage(maryPackage, bouquetDaffodils);
-		EventPackage eventPackageForConor = new EventPackage(conorPackage, bouquetRoses);
-		EventPackage eventPackageForLouise = new EventPackage(louisePackage, bouquetDaisies);
+		EventPackage eventPackageForMary = new EventPackage("Birthday",maryPackage, bouquetDaffodils);
+		EventPackage eventPackageForConor = new EventPackage("Anniversary",conorPackage, bouquetRoses);
+		EventPackage eventPackageForLouise = new EventPackage("Valentines",louisePackage, bouquetDaisies);
 		
 		FlowerInventory flowerInventory = new FlowerInventory();
 		flowerInventory.addFlower(daffodil);
 		flowerInventory.addFlower(rose);
 		flowerInventory.addFlower(daisy);
 
+		itemRepo.save(cardForMary);
+		itemRepo.save(cardForConor);
+		itemRepo.save(cardForLouise);
+		
+		itemRepo.save(daffodil);
+		itemRepo.save(rose);
+		itemRepo.save(daisy);
+		
+		
 		personRepo.save(minnieMouse);
 		personRepo.save(daisyDuck);
 		personRepo.save(gru);
-		flowerRepo.save(daffodil);
-		flowerRepo.save(rose);
-		flowerRepo.save(daisy);
+		
 		eventPackageRepo.save(eventPackageForMary);
 		eventPackageRepo.save(eventPackageForConor);
 		eventPackageRepo.save(eventPackageForLouise);

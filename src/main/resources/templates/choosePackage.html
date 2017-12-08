@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>All Flowers</title>
+<title>Choose Package</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="stylesheet" type="text/css" media="all"
 	href="../static/styles.css" th:href="@{/styles.css}" />
@@ -10,21 +10,26 @@
 	<h1>Choose a Package</h1>
 	<table>
 		<tr>
-			<th>ID</th>
+			<th>     </th>
+			<th>Event</th>
 			<th>Items</th>
+			<th>     </th>
 			<th>Bouquet</th>
-			<th>View</th>
+			
 		</tr>
 		<tr th:each="package : ${packages}">
-			<form action="viewPackage" method="get">
 				<input type="hidden" id="package_id" value="${package.id}"></input>
 				<td th:text="${package.id}">ID</td>
+				<td th:text="${package.eventName}">Event</td>
 				<td th:each="item : ${package.items}"
 				 th:text="${item.name}"> ITEMS</td>
 				<td th:each="flower : ${package.bouquet.flowers}"
 				th:text="${flower.name}"> BOUQUET</td>
-				<td><input type="submit" value="View Package"></input></td>
-			</form>
+				<td>				
+				<form action="/displayAllFlowers" method="get" id="choosepackage">
+				<input type="submit" value="SELECT"></input>
+				</form>
+				</td>
 		</tr>
 	</table>
 </body>
