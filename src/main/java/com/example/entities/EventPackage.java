@@ -5,14 +5,20 @@ import java.util.ArrayList;
 public class EventPackage {
 	
 	private int id;
+	private static int nextId = 0;
 	private ArrayList <Item> items = new ArrayList <Item>();
 	private Bouquet bouquet;
 	
-	public EventPackage(int id, ArrayList<Item> items, Bouquet bouquet) {
+	public EventPackage(ArrayList<Item> items, Bouquet bouquet) {
 		super();
 		this.items = items;
 		this.bouquet = bouquet;
-		this.id = id;
+		setNewId();
+	}
+	
+	private void setNewId() {
+		id = nextId;
+		nextId++;
 	}
 
 	public int getId() {
