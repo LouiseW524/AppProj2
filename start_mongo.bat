@@ -1,5 +1,5 @@
 SET mongod_exe=C:\"Program Files"\MongoDB\Server\3.4\bin\mongod.exe
-SET username=Conor
+SET username=Public
 SET data_folder=C:\Users\%username%\MongoDB\data
 RMDIR %data_folder% /S /Q
 MKDIR %data_folder%
