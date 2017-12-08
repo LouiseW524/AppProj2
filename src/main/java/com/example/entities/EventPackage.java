@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class EventPackage {
 	
-	private int id;
-	private static int nextId = 0;
+	private Long id;
+	private static Long nextId = 1L;
 	private ArrayList <Item> items = new ArrayList <Item>();
 	private Bouquet bouquet;
 	
@@ -21,11 +21,11 @@ public class EventPackage {
 		nextId++;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

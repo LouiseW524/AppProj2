@@ -7,8 +7,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Person {
 	
 	@Id
-	private int id;
-	private static int nextId = 1;
+	private Long id;
+	private static Long nextId = 1L;
 	
 	private String name;
 	private int age;
@@ -27,11 +27,11 @@ public class Person {
 		nextId++;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
