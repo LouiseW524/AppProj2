@@ -30,7 +30,6 @@ public class DataLoader implements ApplicationRunner
 {
 	@Autowired // Find a PersonRepo bean and autowire it into personRepo
 	PersonRepo personRepo;
-	
 	@Autowired
 	EventPackageRepo eventPackageRepo;
 	@Autowired
@@ -89,8 +88,11 @@ public class DataLoader implements ApplicationRunner
 		flowerInventory.addFlower(daisy);
 		
 		Order daffodilOrder = new Order(listDaffodils);
+		daffodilOrder.pay(daffodilOrder.getBalance() - 75.50);
 		Order rosesOrder = new Order(listRoses);
+		rosesOrder.pay(2150.00);
 		Order daisiesOrder = new Order(listDaisies);
+		daisiesOrder.pay(150.00);
 
 		itemRepo.save(cardForMary);
 		itemRepo.save(cardForConor);
