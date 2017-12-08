@@ -7,7 +7,7 @@
 	href="../static/styles.css" th:href="@{/styles.css}" />
 </head>
 <body>
-	<h1>Flowers in Database</h1>
+	<h1>Choose a Package</h1>
 	<table>
 		<tr>
 			<th>ID</th>
@@ -19,8 +19,10 @@
 			<form action="viewPackage" method="get">
 				<input type="hidden" id="package_id" value="${package.id}"></input>
 				<td th:text="${package.id}">ID</td>
-				<td th:text="${package.items}">ITEMS</td>
-				<td th:text="${package.bouquet}">BOUQUET</td>
+				<td th:each="item : ${package.items}"
+				 th:text="${item.name}"> ITEMS</td>
+				<td th:each="flower : ${package.bouquet.flowers}"
+				th:text="${flower.name}"> BOUQUET</td>
 				<td><input type="submit" value="View Package"></input></td>
 			</form>
 		</tr>

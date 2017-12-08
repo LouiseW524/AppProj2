@@ -5,16 +5,17 @@ import java.util.ArrayList;
 public class Bouquet {
 	
 	private ArrayList<Flower> flowers;
-	private Card card;
-	public Bouquet(ArrayList<Flower> flowers, Card card) {
+	public Bouquet(ArrayList<Flower> flowers) {
 		super();
 		this.flowers = flowers;
-		this.card = card;
+		
 	}
 	
+
+
 	@Override
 	public String toString() {
-		return "Bouquet [flowers=" + flowers + ", card=" + card + "]";
+		return "Bouquet [flowers=" + flowers +" ]";
 	}
 	
 	public ArrayList<Flower> getFlowers() {
@@ -25,11 +26,5 @@ public class Bouquet {
 		this.flowers = flowers;
 	}
 	
-	public Card getCard() {
-		return card;
-	}
 	
-	public void setCard(Card card) {
-		this.card = card;
-	}
 }

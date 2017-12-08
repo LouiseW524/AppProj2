@@ -63,9 +63,9 @@ public class DataLoader implements ApplicationRunner
 		packageItems2.add(flower2);
 		packageItems3.add(flower3);
 
-		Bouquet bouquet = new Bouquet(bouquetFlowers, card);
-		Bouquet bouquet2 = new Bouquet(bouquetFlowers2, card2);
-		Bouquet bouquet3 = new Bouquet(bouquetFlowers3, card3);
+		Bouquet bouquet = new Bouquet(bouquetFlowers);
+		Bouquet bouquet2 = new Bouquet(bouquetFlowers2);
+		Bouquet bouquet3 = new Bouquet(bouquetFlowers3);
 
 		
 		EventPackage eventPackage = new EventPackage( 1, packageItems, bouquet);
