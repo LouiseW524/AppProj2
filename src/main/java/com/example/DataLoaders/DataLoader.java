@@ -43,40 +43,40 @@ public class DataLoader implements ApplicationRunner
 		Person daisyDuck = new Person("Daisy Duck", 50, "daisy@cit.ie");
 		Person gru = new Person("Gru", 56, "gru@cit.ie");
 		
-		Card card = new Card("Douglas", "Mary", minnieMouse, "Hi", "Bye");
-		Card card2 = new Card("CIT", "Conor", daisyDuck, "Hi", "Bye");
-		Card card3 = new Card("Mahon", "Louise", gru, "Hi", "Bye");
+		Card cardForMary = new Card("Douglas", "Mary", minnieMouse, "Hi", "Bye", "Card", 5.75, Category.CARD);
+		Card cardForConor = new Card("CIT", "Conor", daisyDuck, "Hi", "Bye", "Card", 5.75, Category.CARD);
+		Card cardForLouise = new Card("Mahon", "Louise", gru, "Hi", "Bye", "Card", 5.75, Category.CARD);
 		
 		Flower daffodil = new Flower(25, "Daffodil", 1.50, Category.FLOWER, "Yellow");
 		Flower rose = new Flower(50, "Rose", 15.00, Category.FLOWER, "Red");
 		Flower daisy = new Flower(75, "Daisy", 3.50, Category.FLOWER, "White and Yellow");
 		
-		ArrayList<Flower> bouquetDaffodils = new ArrayList<Flower>();
-		ArrayList<Flower> bouquetRoses = new ArrayList<Flower>();
-		ArrayList<Flower> bouquetDaisies = new ArrayList<Flower>();
+		ArrayList<Flower> listDaffodils = new ArrayList<Flower>();
+		ArrayList<Flower> listRoses = new ArrayList<Flower>();
+		ArrayList<Flower> listDaisies = new ArrayList<Flower>();
 
 		for (int index = 0; index < 20; index++) {
-			bouquetDaffodils.add(daffodil);
-			bouquetRoses.add(rose);
-			bouquetDaisies.add(daisy);
+			listDaffodils.add(daffodil);
+			listRoses.add(rose);
+			listDaisies.add(daisy);
 		}
 		
-		ArrayList<Item> packageItems = new ArrayList<Item>();
-		ArrayList<Item> packageItems2 = new ArrayList<Item>();
-		ArrayList<Item> packageItems3 = new ArrayList<Item>();
+		ArrayList<Item> maryPackage = new ArrayList<Item>();
+		ArrayList<Item> conorPackage = new ArrayList<Item>();
+		ArrayList<Item> louisePackage = new ArrayList<Item>();
 		
-		packageItems.add(daffodil);
-		packageItems2.add(rose);
-		packageItems3.add(daisy);
+		maryPackage.add(cardForMary);
+		conorPackage.add(cardForConor);
+		louisePackage.add(cardForLouise);
 
-		Bouquet bouquet = new Bouquet(bouquetDaffodils);
-		Bouquet bouquet2 = new Bouquet(bouquetRoses);
-		Bouquet bouquet3 = new Bouquet(bouquetDaisies);
+		Bouquet bouquetDaffodils = new Bouquet(listDaffodils);
+		Bouquet bouquetRoses = new Bouquet(listRoses);
+		Bouquet bouquetDaisies = new Bouquet(listDaisies);
 
 		
-		EventPackage eventPackage = new EventPackage(packageItems, bouquet);
-		EventPackage eventPackage2 = new EventPackage(packageItems2, bouquet2);
-		EventPackage eventPackage3 = new EventPackage(packageItems3, bouquet3);
+		EventPackage eventPackageForMary = new EventPackage(maryPackage, bouquetDaffodils);
+		EventPackage eventPackageForConor = new EventPackage(conorPackage, bouquetRoses);
+		EventPackage eventPackageForLouise = new EventPackage(louisePackage, bouquetDaisies);
 		
 		FlowerInventory flowerInventory = new FlowerInventory();
 		flowerInventory.addFlower(daffodil);
@@ -89,9 +89,9 @@ public class DataLoader implements ApplicationRunner
 		flowerRepo.save(daffodil);
 		flowerRepo.save(rose);
 		flowerRepo.save(daisy);
-		eventPackageRepo.save(eventPackage);
-		eventPackageRepo.save(eventPackage2);
-		eventPackageRepo.save(eventPackage3);
+		eventPackageRepo.save(eventPackageForMary);
+		eventPackageRepo.save(eventPackageForConor);
+		eventPackageRepo.save(eventPackageForLouise);
 		flowerInventoryRepo.save(flowerInventory);
 
 	}
