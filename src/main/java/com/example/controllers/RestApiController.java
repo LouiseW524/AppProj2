@@ -1,8 +1,9 @@
 package com.example.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.entities.Flower;
@@ -16,12 +17,19 @@ public class RestApiController {
 	
 	private final String REST_DIR = "/rest/";
 	private final String GET_FLOWER = REST_DIR + "getFlower";
+	private final String GET_ALL_FLOWERS = REST_DIR + "getAllFlowers";
 	
 	@RequestMapping(GET_FLOWER)
-//	@RequestParam(value="id" defaultValue="1") 
-	public Flower getFlower(int id) {
-		Flower flower = flowerRepo.findOne(id);
+	public Flower getFlower(Long id) {
+		Flower flower = flowerRepo.findOne(id.intValue());
 		return flower;
 	}
+	
+	@RequestMapping(GET_ALL_FLOWERS)
+	public List<Flower> getAllFlowers() {
+		List<Flower> flowers = flowerRepo.findAll();
+		return flowers;
+	}
+	
 
 }
