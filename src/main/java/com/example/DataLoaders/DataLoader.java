@@ -45,15 +45,24 @@ public class DataLoader implements ApplicationRunner
 	{
 		Person minnieMouse = new Person("Minnie Mouse", 65, "minnie@cit.ie");
 		Person daisyDuck = new Person("Daisy Duck", 50, "daisy@cit.ie");
-		Person gru = new Person("Gru", 56, "gru@cit.ie");
+		Person gru = new Person("Gru", 56, "gru@cit.ie");		
+		personRepo.save(minnieMouse);
+		personRepo.save(daisyDuck);
+		personRepo.save(gru);
 		
 		Card cardForMary = new Card("Douglas", "Mary", minnieMouse, "Hi", "Bye", "Card", 5.75, Category.CARD);
 		Card cardForConor = new Card("CIT", "Conor", daisyDuck, "Hi", "Bye", "Card", 5.75, Category.CARD);
-		Card cardForLouise = new Card("Mahon", "Louise", gru, "Hi", "Bye", "Card", 5.75, Category.CARD);
+		Card cardForLouise = new Card("Mahon", "Louise", gru, "Hi", "Bye", "Card", 5.75, Category.CARD);		
+		itemRepo.save(cardForMary);
+		itemRepo.save(cardForConor);
+		itemRepo.save(cardForLouise);
 		
 		Flower daffodil = new Flower(25, "Daffodil", 1.50, Category.FLOWER, "Yellow");
 		Flower rose = new Flower(50, "Rose", 15.00, Category.FLOWER, "Red");
-		Flower daisy = new Flower(75, "Daisy", 3.50, Category.FLOWER, "White and Yellow");
+		Flower daisy = new Flower(75, "Daisy", 3.50, Category.FLOWER, "White and Yellow");		
+		itemRepo.save(daffodil);
+		itemRepo.save(rose);
+		itemRepo.save(daisy);
 		
 		ArrayList<Flower> listDaffodils = new ArrayList<Flower>();
 		ArrayList<Flower> listRoses = new ArrayList<Flower>();
@@ -81,11 +90,9 @@ public class DataLoader implements ApplicationRunner
 		EventPackage eventPackageForMary = new EventPackage("Birthday",maryPackage, bouquetDaffodils);
 		EventPackage eventPackageForConor = new EventPackage("Anniversary",conorPackage, bouquetRoses);
 		EventPackage eventPackageForLouise = new EventPackage("Valentines",louisePackage, bouquetDaisies);
-		
-		FlowerInventory flowerInventory = new FlowerInventory();
-		flowerInventory.addFlower(daffodil);
-		flowerInventory.addFlower(rose);
-		flowerInventory.addFlower(daisy);
+		eventPackageRepo.save(eventPackageForMary);
+		eventPackageRepo.save(eventPackageForConor);
+		eventPackageRepo.save(eventPackageForLouise);
 		
 		String phillie = "Phillie";
 		
@@ -94,28 +101,19 @@ public class DataLoader implements ApplicationRunner
 		Order rosesOrder = new Order(listRoses, phillie);
 		rosesOrder.pay(2150.00);
 		Order daisiesOrder = new Order(listDaisies, phillie);
-		daisiesOrder.pay(150.00);
-
-		itemRepo.save(cardForMary);
-		itemRepo.save(cardForConor);
-		itemRepo.save(cardForLouise);
-		
-		itemRepo.save(daffodil);
-		itemRepo.save(rose);
-		itemRepo.save(daisy);
-		
-		
-		personRepo.save(minnieMouse);
-		personRepo.save(daisyDuck);
-		personRepo.save(gru);
-		
-		eventPackageRepo.save(eventPackageForMary);
-		eventPackageRepo.save(eventPackageForConor);
-		eventPackageRepo.save(eventPackageForLouise);
-		flowerInventoryRepo.save(flowerInventory);
+		daisiesOrder.pay(150.00);		
 		orderRepo.save(daffodilOrder);
 		orderRepo.save(rosesOrder);
 		orderRepo.save(daisiesOrder);
+		
+		FlowerInventory flowerInventory = new FlowerInventory();		
+		daffodil.setQuantity(4000);
+		flowerInventory.addFlower(daffodil);		
+		rose.setQuantity(1500);
+		flowerInventory.addFlower(rose);		
+		daisy.setQuantity(3500);
+		flowerInventory.addFlower(daisy);		
+		flowerInventoryRepo.save(flowerInventory);
 
 	}
 }
