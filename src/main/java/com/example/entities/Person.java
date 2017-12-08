@@ -8,7 +8,7 @@ public class Person {
 	
 	@Id
 	private int id;
-	private static int nextId = 0;
+	private static int nextId = 1;
 	
 	private String name;
 	private int age;
