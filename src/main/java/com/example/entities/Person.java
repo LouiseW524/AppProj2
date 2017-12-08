@@ -8,17 +8,23 @@ public class Person {
 	
 	@Id
 	private int id;
+	private static int nextId = 0;
 	
 	private String name;
 	private int age;
 	private String emailAddress;
 	
-	public Person(int id, String name, int age, String emailAddress) {
+	public Person(String name, int age, String emailAddress) {
 		super();
-		this.id = id;
+		setNewId();
 		this.name = name;
 		this.age = age;
 		this.emailAddress = emailAddress;
+	}
+	
+	private void setNewId() {
+		id = nextId;
+		nextId++;
 	}
 
 	public int getId() {
