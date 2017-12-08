@@ -8,7 +8,7 @@ import com.example.entities.Flower;
 public class FlowerInventory {
 	
 	private Long id;
-	private static long nextId = 1;
+	private static Long nextId = 1L;
 	private ArrayList<Flower> flowers;
 	
 	public void addFlower(Flower flower) {
