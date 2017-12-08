@@ -10,7 +10,16 @@ public class Order {
 	private double orderPrice;
 	private double paid;
 	private double balance;
+	private String buyer;
 	
+	public String getBuyer() {
+		return buyer;
+	}
+
+	public void setBuyer(String buyer) {
+		this.buyer = buyer;
+	}
+
 	public ArrayList<Flower> getFlowers() {
 		return flowers;
 	}
@@ -53,9 +62,10 @@ public class Order {
 		return orderPrice;
 	}
 
-	public Order(ArrayList<Flower> flowers) {
+	public Order(ArrayList<Flower> flowers, String buyer) {
 		super();
 		this.flowers = flowers;
+		this.buyer = buyer;
 		updateOrderPrice();
 	}
 

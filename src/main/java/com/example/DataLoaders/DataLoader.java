@@ -87,11 +87,13 @@ public class DataLoader implements ApplicationRunner
 		flowerInventory.addFlower(rose);
 		flowerInventory.addFlower(daisy);
 		
-		Order daffodilOrder = new Order(listDaffodils);
+		String phillie = "Phillie";
+		
+		Order daffodilOrder = new Order(listDaffodils, phillie);
 		daffodilOrder.pay(daffodilOrder.getBalance() - 75.50);
-		Order rosesOrder = new Order(listRoses);
+		Order rosesOrder = new Order(listRoses, phillie);
 		rosesOrder.pay(2150.00);
-		Order daisiesOrder = new Order(listDaisies);
+		Order daisiesOrder = new Order(listDaisies, phillie);
 		daisiesOrder.pay(150.00);
 
 		itemRepo.save(cardForMary);
