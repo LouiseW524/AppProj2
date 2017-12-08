@@ -6,15 +6,13 @@ public class Item {
 
 	private int id;
 	private static int nextId = 0;
-	private int quantity;
 	private String name;
 	private double price;
 	private Category category;
 	
-	public Item(int quantity, String name, double price, Category category) {
+	public Item(String name, double price, Category category) {
 		super();
 		setNewId();
-		this.quantity = quantity;
 		this.name = name;
 		this.price = price;
 		this.category = category;
@@ -52,12 +50,5 @@ public class Item {
 		this.price = price;
 	}
 
-	public int getQuantity() {
-		return quantity;
-	}
-
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
-	}
 
 }

@@ -1,6 +1,8 @@
 package com.example.entities;
 
-public class Card {
+import com.example.enums.Category;
+
+public class Card extends Item{
 	
 	private String address;
 	private String recipientName;
@@ -8,8 +10,8 @@ public class Card {
 	private String message;
 	private String customMessage;
 	
-	public Card(String address, String recipientName, Person sender, String message, String customMessage) {
-		super();
+	public Card(String address, String recipientName, Person sender, String message, String customMessage, String name, double price, Category category) {
+		super(name, price, category);
 		this.address = address;
 		this.recipientName = recipientName;
 		this.sender = sender;
