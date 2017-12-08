@@ -28,15 +28,17 @@ public class Controllers {
 	@Autowired
 	ItemRepo itemRepo;
 	
-	final String DISPLAY_ALL_FLOWERS = "displayAllFlowers";
-	final String INDEX = "index";
-	final String USING_PARAMETER = "usingParameter";
-	final String DISPLAY_ALL_PEOPLE = "displayAllPeople";
-	final String DISPLAY_PERSON = "displayPerson";
-	final String DISPLAY_FLOWER = "displayFlower";
-	final String CHOOSE_FLOWER = "chooseFlowerById";
-	final String CHOOSE_PACKAGE = "choosePackage";
-	final String CUSTOM_PACKAGE = "customPackage";
+	final String BACKEND = "/backend";
+	
+	final String DISPLAY_ALL_FLOWERS = "/displayAllFlowers";
+	final String INDEX = "/index";
+	final String USING_PARAMETER = "/usingParameter";
+	final String DISPLAY_ALL_PEOPLE = "/displayAllPeople";
+	final String DISPLAY_PERSON = "/displayPerson";
+	final String DISPLAY_FLOWER = "/displayFlower";
+	final String CHOOSE_FLOWER = "/chooseFlowerById";
+	final String CHOOSE_PACKAGE = "/choosePackage";
+	final String CUSTOM_PACKAGE = "/customPackage";
 	/**
 	 * Calls index.html
 	 */
@@ -46,7 +48,7 @@ public class Controllers {
 		return INDEX;
 	}
 	
-	@GetMapping("/" + USING_PARAMETER)
+	@GetMapping(USING_PARAMETER)
 	public String doWelcomeWithParams(@RequestParam(value="name", defaultValue="To You!")String name, Model model)
 	{
 		String sentence = "Welcome " + name;
@@ -54,7 +56,7 @@ public class Controllers {
 		return USING_PARAMETER;
 	}
 
-	@GetMapping("/" + DISPLAY_ALL_PEOPLE)
+	@GetMapping(DISPLAY_ALL_PEOPLE)
 	public String displayAll(Model model)
 	{
 		List<Person> p = personRepo.findAll();
@@ -62,7 +64,7 @@ public class Controllers {
 		return DISPLAY_ALL_PEOPLE;
 	}
 	
-	@GetMapping("/" + DISPLAY_PERSON + "/{id}")
+	@GetMapping(DISPLAY_PERSON + "/{id}")
 	public String showMyDetails(@PathVariable int id, Model model)
 	{
 		Person p = (Person) personRepo.findOne((int) id);
@@ -70,33 +72,33 @@ public class Controllers {
 		return DISPLAY_PERSON;
 	}
 	
-	@GetMapping("/" + DISPLAY_ALL_FLOWERS)
+	@GetMapping(DISPLAY_ALL_FLOWERS)
 	public String displayAllFlowers(Model model) {
 		List<Item> flowers = itemRepo.findAll();
 		model.addAttribute("flowers", flowers);
 		return DISPLAY_ALL_FLOWERS;
 	}
 	
-	@GetMapping("/" + DISPLAY_FLOWER)
+	@GetMapping(DISPLAY_FLOWER)
 	public String displayFlower(@RequestParam(value="id", defaultValue="0")int id, Model model ) {
 		Flower flower = (Flower) itemRepo.findOne((int) id);
 		model.addAttribute("flower", flower);
 		return DISPLAY_FLOWER;
 	}
 	
-	@GetMapping("/" + CHOOSE_FLOWER)
+	@GetMapping(CHOOSE_FLOWER)
 	public String chooseFlowerById() {
 		return CHOOSE_FLOWER;
 	}
 	
-	@GetMapping("/" + CHOOSE_PACKAGE) 
+	@GetMapping(CHOOSE_PACKAGE) 
 	public String choosePackage(Model model){
 		List<EventPackage> packages = packageRepo.findAll();
 		model.addAttribute("packages", packages);
 		return CHOOSE_PACKAGE;
 	}
 	
-	@GetMapping("/" + CUSTOM_PACKAGE) 
+	@GetMapping(CUSTOM_PACKAGE) 
 	public String customPackage(Model model){
 		
 		List<Item>item = itemRepo.findAll();
