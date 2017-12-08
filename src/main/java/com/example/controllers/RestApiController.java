@@ -1,5 +1,6 @@
 package com.example.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,10 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.entities.Flower;
 import com.example.entities.Item;
-
-import com.example.repositories.ItemRepo;
+import com.example.enums.Category;
 import com.example.repositories.FlowerInventoryRepo;
 import com.example.repositories.ItemRepo;
 import com.example.repositories.OrderRepo;
@@ -32,6 +31,7 @@ public class RestApiController {
 	private final String REST_DIR = "/rest/";
 	private final String GET_ITEM = REST_DIR + "getItem";
 	private final String GET_ALL_ITEMS = REST_DIR + "getAllItems";
+	private final String GET_ALL_FLOWERS = REST_DIR + "getAllFlowers";
 	private final String GET_FLOWER_INVENTORY = REST_DIR + "getFlowerInventory";
 	private final String GET_ALL_ORDERS = REST_DIR + "getAllOrders";
 	
@@ -43,9 +43,21 @@ public class RestApiController {
 	
 
 	@RequestMapping(GET_ALL_ITEMS)
-	public List<Item> getAllFlowers() {
+	public List<Item> getAllItems() {
 		List<Item> items = itemRepo.findAll();
 		return items;
+	}
+	
+	@RequestMapping(GET_ALL_FLOWERS)
+	public List<Item> getAllFlowers() {
+		List<Item> items = itemRepo.findAll();
+		List<Item> flowers = new ArrayList<Item>();
+		for (Item item : items) {
+			if (item.getCategory() == Category.FLOWER) {
+				flowers.add(item);
+			}
+		}
+		return flowers;
 	}
 	
 	@RequestMapping(GET_FLOWER_INVENTORY + "/{id}")
