@@ -6,6 +6,8 @@ import com.example.entities.Flower;
 
 public class Order {
 	
+	private Long id;
+	private static Long nextId = 1L;
 	private ArrayList<Flower> flowers;
 	private double orderPrice;
 	private double paid;
@@ -67,6 +69,16 @@ public class Order {
 		this.flowers = flowers;
 		this.buyer = buyer;
 		updateOrderPrice();
+		setNewId();
+	}
+	
+	private void setNewId() { 
+		id = nextId;
+		nextId++;
+	}
+	
+	public Long getId() {
+		return id;
 	}
 
 }
