@@ -1,8 +1,6 @@
-package com.example.rest.entities;
+package com.example.entities;
 
 import java.util.ArrayList;
-
-import com.example.entities.Flower;
 
 public class Order {
 	
