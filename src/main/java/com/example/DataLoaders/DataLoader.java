@@ -11,7 +11,9 @@ import com.example.entities.Bouquet;
 import com.example.entities.Card;
 import com.example.entities.EventPackage;
 import com.example.entities.Flower;
+import com.example.entities.FlowerInventory;
 import com.example.entities.Item;
+import com.example.entities.Order;
 import com.example.entities.Person;
 import com.example.enums.Category;
 import com.example.repositories.EventPackageRepo;
@@ -19,8 +21,6 @@ import com.example.repositories.FlowerInventoryRepo;
 import com.example.repositories.ItemRepo;
 import com.example.repositories.OrderRepo;
 import com.example.repositories.PersonRepo;
-import com.example.rest.entities.FlowerInventory;
-import com.example.rest.entities.Order;
 
 //ApplicationRunner is run before after the beans have been created and the application
 //context has been completed.
