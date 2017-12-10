@@ -10,6 +10,11 @@ public class Item {
 	private double price;
 	private Category category;
 	
+	public Item() {
+		super();
+		setNewId();
+	}
+	
 	public Item(String name, double price, Category category) {
 		super();
 		setNewId();
