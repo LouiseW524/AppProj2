@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="ISO-8859-1"></meta>
+		<title>All Orders</title>
+	</head>
+	<body>
+		<h1>Orders in Database</h1>
+	<table>
+		<tr>
+			<th>ID</th>
+			<th>Buyer</th>
+			<th>Balance</th>
+			<th>Order Price</th>
+		</tr>
+		<tr th:each="order : ${orders}">
+			<td th:text="${order.id}">ID</td>
+			<td th:text="${order.buyer}">NAME</td>
+			<td th:text="${order.balance}">AGE</td>
+			<td th:text="${order.orderPrice}">EMAIL ADDRESS</td>
+		</tr>
+	</table>
+	
+	</body>
+</html>
