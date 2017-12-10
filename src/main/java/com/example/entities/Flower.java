@@ -6,6 +6,10 @@ public class Flower extends Item{
 	
 	private String colour;
 	private int quantity;
+	
+	public Flower() {
+		super();
+	}
 
 	public Flower(int quantity, String name, double price, Category category, String colour) {
 		super(name, price, category);

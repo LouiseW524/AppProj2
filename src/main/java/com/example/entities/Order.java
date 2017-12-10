@@ -70,6 +70,11 @@ public class Order {
 		setNewId();
 	}
 	
+	public Order() {
+		super();
+		setNewId();
+	}
+	
 	private void setNewId() { 
 		id = nextId;
 		nextId++;
