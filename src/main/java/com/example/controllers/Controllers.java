@@ -1,5 +1,6 @@
 package com.example.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import com.example.entities.EventPackage;
 import com.example.entities.Flower;
 import com.example.entities.Item;
 import com.example.entities.Person;
+import com.example.enums.Category;
 import com.example.repositories.EventPackageRepo;
 import com.example.repositories.ItemRepo;
 import com.example.repositories.PersonRepo;
@@ -100,9 +102,20 @@ public class Controllers {
 	@GetMapping(CUSTOM_PACKAGE) 
 	public String customPackage(Model model){
 		
-		List<Item>item = itemRepo.findAll();
+		List<Item> items = itemRepo.findAll();
+		List<Item> misc = new ArrayList<Item>();
+		List<Item> flowers = new ArrayList<Item>();
+		for (Item item : items) {
+			if (item.getCategory() == Category.FLOWER) {
+				flowers.add(item);
+			}
+			else
+			{ misc.add(item); }
+		} 
 		
-		model.addAttribute("items", item);
+		model.addAttribute("items", flowers);
+		model.addAttribute("misc", misc);
+
 		return CUSTOM_PACKAGE;
 	}
 	

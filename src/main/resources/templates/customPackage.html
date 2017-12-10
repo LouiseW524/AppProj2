@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>Spring Boot Thymeleaf Hello World Example</title>
+<title>Custom Package</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="stylesheet" type="text/css" media="all"
 	href="../static/styles.css" th:href="@{/styles.css}" />
@@ -9,14 +9,22 @@
 <body>
 	<h1>Create your own custom package</h1>
 	
-	<table>
-		
+		<h3> Choose flowers for your bouquet </h3>
+
 		<tr th:each="item : ${items}">
-				<input type="hidden" id="package_id" value="${package.id}"></input>
+				<input type="checkbox" name="flower" value="${item.name}"></input>
 				<td th:text="${item.name}"></td>
 				
 		</tr>
-	</table>
+		
+		<h3> Choose Items for your Custom Package </h3>
+		
+		<tr th:each="misc : ${misc}">
+				<input type="checkbox" name="item" value="${misc.name}"></input>
+				<td th:text="${misc.name}"></td>
+		</tr>
+		
+		
 	
 </body>
 </html>
