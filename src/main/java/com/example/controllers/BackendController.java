@@ -48,22 +48,34 @@ public class BackendController {
 	@GetMapping(DASHBOARD)
 	public String showDashboard(Model model) {
 		FlowerInventory flowerInventory = getFlowerInventory();
-		double balance = getOutstandingBalance();
+		Order[] orders = getOrders();
+		double balance = getOutstandingBalance(orders);
+		int orderCount = orders.length;
+		double totalOrderValue = getOrdersValue(orders);
+		
 		model.addAttribute("flowerInventory", flowerInventory);
 		model.addAttribute("balance", balance);
+		model.addAttribute("orderCount", orderCount);
+		model.addAttribute("ordersValue", totalOrderValue);
 		return DASHBOARD;
 	}
 	
 	
 	public FlowerInventory getFlowerInventory() {
 		RestTemplate restTemplate = new RestTemplate();
-		FlowerInventory flowerInventory = restTemplate.getForObject(REST_FLOWER_INVENTORY, FlowerInventory.class);
-		return flowerInventory;
+		FlowerInventory[] flowerInventory = restTemplate.getForObject(REST_FLOWER_INVENTORY, FlowerInventory[].class);
+		return flowerInventory[0];
 	}
 	
-	public double getOutstandingBalance() {
-		RestTemplate restTemplate = new RestTemplate();
-		Order[] orders = restTemplate.getForObject(REST_ORDERS, Order[].class);
+	public double getOrdersValue(Order[] orders) {
+		double totalValue = 0.0;
+		for (Order order : orders) {
+			totalValue += order.getOrderPrice();
+		}
+		return totalValue;
+	}
+	
+	public double getOutstandingBalance(Order[] orders) {
 		double balance = 0.0;
 		for (Order order : orders) {
 			balance += order.getBalance();
