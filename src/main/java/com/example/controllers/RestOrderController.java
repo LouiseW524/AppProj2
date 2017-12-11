@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,6 +34,11 @@ public class RestOrderController {
 	public List<Order> getAllOrders() {
 		List<Order> orders = orderRepo.findAll();
 		return orders;
+	}
+	
+	@RequestMapping(method = RequestMethod.POST)
+	public void addOrder(@RequestBody Order order) {
+		orderRepo.save(order);
 	}
 	
 	@RequestMapping(method = RequestMethod.GET, value = BALANCE)
