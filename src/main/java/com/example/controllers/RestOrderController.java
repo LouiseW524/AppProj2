@@ -60,51 +60,6 @@ public class RestOrderController {
 		return balances;
 	}
 	
-	@RequestMapping(value = "/submitPage" , method = RequestMethod. POST)
-	public EventPackage bouquetFlowers(@RequestParam("eventName")String eventName, @RequestParam("flower")String[] flowerboxValue, @RequestParam("item")String[] itemboxValue) 
-	{
-		List<Item> allItems = itemRepo.findAll();
-		List<Flower> allFlowers = new ArrayList<Flower>();
-		List<Item> noFlowerItemList = new ArrayList<Item>();
-	    ArrayList<Item> items = new ArrayList<Item>();
 
-		Bouquet bouquet = null;
-		
-		for(Item item : allItems){
-			if (item.getCategory() == Category.FLOWER) {
-				allFlowers.add((Flower) item);
-			}
-			else{
-				noFlowerItemList.add(item);
-			}
-		}
-		
-		if(flowerboxValue.length==2)
-        	{
-		      ArrayList<Flower> flowers = new ArrayList<Flower>();
-		      for(String string : flowerboxValue){
-		    	  for(Flower flower : allFlowers){
-		    	  if(string.equalsIgnoreCase(flower.getName()))
-		    		  flowers.add(flower);
-		    	  }
-		      }
-          	   bouquet = new Bouquet(flowers);
-        	}
-		
-		if(itemboxValue.length==2)
-    	{
-	      for(String string : itemboxValue){
-	    	  for(Item item : noFlowerItemList){
-	    	  if(string.equalsIgnoreCase(item.getName()))
-	    		  items.add(item);
-	    	  }
-	      }
-    	}
-		
-		EventPackage orderedPackage = new EventPackage(eventName, items, bouquet) ;
-		
-		return orderedPackage;
-		
-	}
 
 }

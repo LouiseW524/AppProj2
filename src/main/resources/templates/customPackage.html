@@ -8,36 +8,29 @@
 </head>
 <body>
 	<h1>Create your own custom package</h1>
-	
-		<h3> Choose flowers for your bouquet </h3>
 
+	<h3>Choose flowers for your bouquet</h3>
+
+	<form action="/submitPage.html" method="post">
 		<tr th:each="item : ${items}">
-				<form action="submitPage" method="post">
-				<input type="checkbox" name="flower" value="${item.name}"></input>
-				<td th:text="${item.name}"></td>
-				</form>
+			<input type="checkbox" name="flower" value="${item.name}"></input>
+			<td th:text="${item.name}"></td>
 		</tr>
-		
-		<h3> Choose Items for your Custom Package </h3>
-		
+
+		<h3>Choose Items for your Custom Package</h3>
+
 		<tr th:each="misc : ${misc}">
-				
-				<form action="submitPage" method="post">
-				<input type="checkbox" name="item" value="${misc.name}"></input>
-				<td th:text="${misc.name}"></td>
-				</form>
+
+			<input type="checkbox" name="item" value="${misc.name}"></input>
+			<td th:text="${misc.name}"></td>
 		</tr>
 		<p>
-		<form action="submitPage" method="post">
-  		Event name: <input type="text" name="fname" value="event"><br>
-		</form>
+			Event name: <input type="text" name="eventName" value="eventName"></input>
+			<button name="subject" type="submit" value="fav_HTML">SUBMIT</button>
 		</p>
-		<p>
-		<form action="/submitPage.php" method="post">
- 	    <button name="subject" type="submit" value="fav_HTML">SUBMIT</button>
-		</form>
-		</p>
-		
-	
+			
+	</form>
+
+
 </body>
 </html>

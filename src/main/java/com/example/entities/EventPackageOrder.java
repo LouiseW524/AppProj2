@@ -46,11 +46,13 @@ public class EventPackageOrder {
 
 	private void updateOrderPrice() {
 		double price = 0.0;
-		for (Flower flower : eventPackage.getBouquet().getFlowers()) {
-			price += flower.getPrice() * flower.getQuantity();
-		}
-		for (Item item : eventPackage.getItems()) {
-			price += item.getPrice();
+		if (eventPackage != null) {
+			for (Flower flower : eventPackage.getBouquet().getFlowers()) {
+				price += flower.getPrice() * flower.getQuantity();
+			}
+			for (Item item : eventPackage.getItems()) {
+				price += item.getPrice();
+			}
 		}
 		
 		orderPrice = price;
