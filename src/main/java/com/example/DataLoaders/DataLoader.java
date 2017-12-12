@@ -10,12 +10,14 @@ import org.springframework.stereotype.Component;
 import com.example.entities.Bouquet;
 import com.example.entities.Card;
 import com.example.entities.EventPackage;
+import com.example.entities.EventPackageOrder;
 import com.example.entities.Flower;
 import com.example.entities.FlowerInventory;
 import com.example.entities.Item;
 import com.example.entities.Order;
 import com.example.entities.Person;
 import com.example.enums.Category;
+import com.example.repositories.EventPackageOrderRepo;
 import com.example.repositories.EventPackageRepo;
 import com.example.repositories.FlowerInventoryRepo;
 import com.example.repositories.ItemRepo;
@@ -38,6 +40,8 @@ public class DataLoader implements ApplicationRunner
 	ItemRepo itemRepo;
 	@Autowired
 	OrderRepo orderRepo;
+	@Autowired
+	EventPackageOrderRepo eventPackageOrderRepo;
 	
 	
 	@Override
@@ -93,6 +97,14 @@ public class DataLoader implements ApplicationRunner
 		eventPackageRepo.save(eventPackageForMary);
 		eventPackageRepo.save(eventPackageForConor);
 		eventPackageRepo.save(eventPackageForLouise);
+		
+		EventPackageOrder maryOrder = new EventPackageOrder(eventPackageForMary, "Mary");
+		EventPackageOrder conorOrder = new EventPackageOrder(eventPackageForConor, "Conor");
+		EventPackageOrder louiseOrder = new EventPackageOrder(eventPackageForLouise, "Louise");
+		
+		eventPackageOrderRepo.save(maryOrder);
+		eventPackageOrderRepo.save(conorOrder);
+		eventPackageOrderRepo.save(louiseOrder);
 		
 		String phillie = "Phillie";
 		
